@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+bool isValidOperator(char operatorChar) {
+    return operatorChar == '+' || operatorChar == '-' || operatorChar == '*' || operatorChar == '/';
+}
+
+int main() {
+    char inputExpression[1000];
+    int i = 0;
+    bool valid = true;
+
+    printf("Enter an arithmetic expression to validate operators: ");
+    fgets(inputExpression, sizeof(inputExpression), stdin);
+
+    while (inputExpression[i] != '\0') {
+        if (!isValidOperator(inputExpression[i]) && inputExpression[i] != ' ' && inputExpression[i] != '\n') {
+            valid = false;
+            break;
+        }
+        i++;
+    }
+
+    if (valid) {
+        printf("The operators in the expression are valid.\n");
+    } else {
+        printf("Invalid operators found in the expression.\n");
+    }
+
+    return 0;
+}
